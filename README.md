@@ -35,7 +35,7 @@ The server binds to 127.0.0.1. Public hosting and authenticated operator access 
 ## Customer site
 
 - **Hero:** "More sales. Less guesswork." with a free-shop-audit CTA and an illustrative before/after listing that echoes the Facebook ad.
-- **Promise:** "Your voice up front. AI behind the scenes." Your words, your real photos, you approve everything.
+- **A word about AI:** a signed note from Nick on how AI is used: your words, your real photos, and you approve everything.
 - **Services:** listing and gig SEO, photo and shop visuals, replies and follow-up, each with "You receive" and "You provide" lists.
 - **Instant listing check:** a free, no-signup completeness score that uses the `/api/audit` checklist. Nothing is stored.
 - **Sample deliverables:** switchable Etsy and Fiverr examples, clearly labelled as fictional.
@@ -66,4 +66,3 @@ This test covers the listing check, request → inbox → operator stats, the br
 
 - Optional: a custom domain, and protected hosting if the operator desk ever goes online.
 - Genuine proof from delivered work. No testimonials or results have been invented here.
-- Earlier review history for the previous "Growth Studio" version is kept in [advisory-board-review.md](advisory-board-review.md).
