@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SellerSage">
+  <rect x="15" y="25" width="7" height="20" rx="1.2" fill="#c39a48"/>
+  <rect x="27" y="15" width="7" height="30" rx="1.2" fill="#c39a48"/>
+  <rect x="39" y="5" width="7" height="38" rx="1.2" fill="#c39a48"/>
+  <path d="M32 59C17 57 6 46 3 30c15 0 27 11 29 29z" fill="#5f7d5c"/>
+  <path d="M32 59c15-2 26-14 29-31-15 1-27 12-29 31z" fill="#5f7d5c"/>
+  <path d="M32 59v4" stroke="#5f7d5c" stroke-width="3" stroke-linecap="round"/>
+</svg>

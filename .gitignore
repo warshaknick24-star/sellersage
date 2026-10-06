@@ -1,0 +1,13 @@
+.env
+node_modules/
+*.log
+data/
+artifacts/
+# Private coursework and working notes (not published)
+*.docx
+MarketAnalysisReport.md
+project-summary.md
+advisory-board-review.md
+/*.png
+.claude/
+public/assets/maker-studio-hero.png

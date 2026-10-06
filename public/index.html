@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SellerSage | Operator Desk</title>
+  <link rel="icon" href="/assets/sellersage-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+<aside>
+  <a class="logo" href="#overview"><img src="/assets/sellersage-mark.svg" alt="" width="34" height="34"><span><span class="wm-seller">Seller</span><span class="wm-sage">Sage</span></span></a>
+  <p class="label">OPERATOR DESK</p>
+  <nav aria-label="Operator navigation">
+    <a href="#overview">Overview</a><a href="#funnel">Funnel</a><a href="#inquiries">Inbox <b id="nav-count">0</b></a><a href="#workbench">Listing workbench</a><a href="#economics">Offer &amp; economics</a>
+  </nav>
+  <div class="side-note"><strong>Your voice up front.<br>AI behind the scenes.</strong><p>Every draft is reviewed by a person before a seller sees it, and every seller approves before anything goes live.</p></div>
+  <a class="site-link" href="/">View customer site ↗</a>
+</aside>
+<main>
+  <header id="overview">
+    <div><p class="eyebrow" id="today">TODAY</p><h1 id="greeting">Hello, <em>Nick.</em></h1></div>
+    <button type="button" id="refresh-inquiries" class="primary">Refresh inbox</button>
+  </header>
+
+  <section class="stats" aria-label="Inquiry summary">
+    <article><p>REQUESTS</p><strong id="stat-total">–</strong><span>From the customer site</span></article>
+    <article><p>FREE AUDITS</p><strong id="stat-audits">–</strong><span>Consideration stage</span></article>
+    <article><p>PACKAGE REQUESTS</p><strong id="stat-packages">–</strong><span>Conversion stage</span></article>
+    <article><p>REQUESTED VALUE</p><strong id="stat-value">–</strong><span>List price of requested packages</span></article>
+  </section>
+
+  <section id="funnel" class="panel" aria-labelledby="funnel-title">
+    <div class="panel-head"><div><p class="eyebrow">MARKETING FUNNEL</p><h2 id="funnel-title">Where sellers are right now</h2></div></div>
+    <ol class="funnel">
+      <li><span>1</span><strong>Awareness</strong><small>Facebook ad “More Sales. Less Guesswork.” + direct outreach to sellers</small><em>Tracked outside this desk</em></li>
+      <li><span>2</span><strong>Consideration</strong><small>Free shop audit requested</small><em id="funnel-audit">0</em></li>
+      <li><span>3</span><strong>Conversion</strong><small>Paid package requested</small><em id="funnel-convert">0</em></li>
+      <li><span>4</span><strong>Loyalty</strong><small>Support months: follow up on the numbers that sold them</small><em id="funnel-loyal">0</em></li>
+    </ol>
+    <p class="hint">Target from the pricing plan: 1 in 4 free audits converts to a paid package.</p>
+  </section>
+
+  <section class="panel" id="inquiries" aria-labelledby="inquiries-title">
+    <div class="panel-head"><div><p class="eyebrow">FROM THE CUSTOMER WEBSITE</p><h2 id="inquiries-title">Audit &amp; project requests</h2></div>
+      <label class="filter-label" for="inquiry-filter">Show<select id="inquiry-filter"><option value="all">All requests</option></select></label></div>
+    <p id="inquiry-status" role="status">Loading locally saved inquiries…</p>
+    <div id="inquiry-list"></div>
+  </section>
+
+  <section class="panel" id="workbench" aria-labelledby="workbench-title">
+    <div class="panel-head"><div><p class="eyebrow">AUDIT TOOLING</p><h2 id="workbench-title">Listing workbench</h2><p class="sub">Paste a seller’s listing to score it and prepare a draft for your review. Nothing here is published or sent to the seller.</p></div></div>
+    <div class="workbench-grid">
+      <form id="workbench-form">
+        <label for="wb-title">Title<input id="wb-title" name="title" maxlength="2000"></label>
+        <div class="pair"><label for="wb-keyword">Main search phrase<input id="wb-keyword" name="keyword" maxlength="2000"></label><label for="wb-voice">Seller voice notes<input id="wb-voice" name="voice" maxlength="2000" placeholder="Warm, first person, a little playful"></label></div>
+        <label for="wb-tags">Tags (comma separated)<input id="wb-tags" name="tags" maxlength="2000"></label>
+        <label for="wb-description">Description<textarea id="wb-description" name="description" rows="5" maxlength="12000"></textarea></label>
+        <label for="wb-details">Verified product facts<input id="wb-details" name="details" maxlength="2000"></label>
+        <label class="check" id="wb-consent-row" hidden><input type="checkbox" id="wb-consent"> I have the seller’s OK to send this listing text (no customer data) to the AI provider.</label>
+        <div class="actions"><button type="button" class="secondary" id="wb-audit">Score listing</button><button type="button" class="secondary" id="wb-local">Local draft</button><button type="button" class="primary" id="wb-ai" hidden>AI draft for review</button></div>
+        <p id="wb-status" role="status"></p>
+      </form>
+      <div id="wb-output" class="wb-output"><p class="empty">Score or draft a listing to see results here.</p></div>
+    </div>
+  </section>
+
+  <section class="panel" id="economics" aria-labelledby="economics-title">
+    <div class="panel-head"><div><p class="eyebrow">OFFER LADDER</p><h2 id="economics-title">Offer &amp; unit economics</h2><p class="sub" id="economics-basis"></p></div></div>
+    <div class="table-wrap"><table><thead><tr><th scope="col">Package</th><th scope="col">Price</th><th scope="col">Cost to deliver</th><th scope="col">Margin</th><th scope="col">Role</th></tr></thead><tbody id="economics-rows"></tbody></table></div>
+    <p class="hint">Pricing principles: anchor with the $1,500 Brand Build, make Refresh + 3 months the obvious best value (decoy), keep round prices (no .99), and don’t race Fiverr’s $50 gigs to the bottom.</p>
+  </section>
+</main>
+</body>
+</html>
