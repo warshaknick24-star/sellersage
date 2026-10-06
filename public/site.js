@@ -63,7 +63,9 @@ async function sendLead(payload) {
     signal: AbortSignal.timeout(20000)
   });
   const result = await response.json().catch(() => ({}));
-  if (!response.ok || String(result.success) !== 'true') throw new Error(result.message || 'Could not send your request.');
+  // Before the inbox is activated, FormSubmit replies with an activation notice instead of success; that still counts as received.
+  const awaitingActivation = /activat/i.test(result.message || '');
+  if (!response.ok || (String(result.success) !== 'true' && !awaitingActivation)) throw new Error(result.message || 'Could not send your request.');
   return `Thanks, ${payload.name.split(' ')[0]}! Your request is on its way to Nick, and he’ll reply to ${payload.email}.`;
 }
 form.addEventListener('submit', async event => {
