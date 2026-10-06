@@ -42,11 +42,9 @@ try {
   assert.match(await page.locator('h1').textContent(), /More sales, less guesswork\./);
   assert.match(await page.title(), /SellerSage/);
   assert.equal(await page.locator('a[href="/operator"]').count(), 0);
-  assert.ok(await page.locator('#sample-etsy').isVisible());
-  await page.getByRole('button', {name: 'Fiverr · design gig'}).click();
-  assert.ok(await page.locator('#sample-fiverr').isVisible());
-  assert.ok(await page.locator('#sample-etsy').isHidden());
-  await page.getByRole('button', {name: 'Etsy · pottery listing'}).click();
+  assert.equal(await page.locator('.tag-grid span').count(), 13);
+  assert.equal(await page.locator('.search-table .yes').count(), 6);
+  assert.equal(await page.locator('.reply-flow .flow-step').count(), 3);
   await page.locator('summary').first().click();
   assert.ok(await page.locator('details').first().evaluate(el => el.open));
   await page.fill('#check-title-input', 'blue mug');
@@ -93,8 +91,7 @@ try {
   await revealAll(page);
   await checkBounds(page);
   await page.screenshot({path: join(artifacts, 'customer-desktop.png'), fullPage: true});
-  await page.locator('[data-sample="fiverr"]').click();
-  await page.locator('#examples').screenshot({path: join(artifacts, 'fiverr-sample.png')});
+  await page.locator('#examples').screenshot({path: join(artifacts, 'mug-example.png')});
 
   for(const width of [390, 320, 768, 1024]) {
     await page.setViewportSize({width, height: 844});
@@ -108,14 +105,14 @@ try {
 
   const nojs = await browser.newContext({javaScriptEnabled: false, viewport:{width:390,height:844}});
   const plain = await nojs.newPage(); monitor(plain); await plain.goto(base);
-  for(const selector of ['#services','#sample-etsy','#sample-fiverr','#pricing','#process','#about','#inquiry']) {
+  for(const selector of ['#services','#examples','.search-panel','.reply-system','#pricing','#process','#about','#inquiry']) {
     assert.ok(await plain.locator(selector).isVisible());
     assert.equal(await plain.locator(selector).evaluate(el => getComputedStyle(el).opacity), '1');
   }
   assert.equal(await plain.locator('#lead-form').getAttribute('method'), 'post');
   assert.match(await plain.locator('#lead-form').getAttribute('action'), /^https:\/\/formsubmit\.co\//);
   await checkBounds(plain);
-  reports.push('No-JS essential content and both samples visible; form falls back to a POST to FormSubmit, never a GET.');
+  reports.push('No-JS essential content and the mug example visible; form falls back to a POST to FormSubmit, never a GET.');
 
   const reduced = await browser.newContext({reducedMotion:'reduce'});
   const calm = await reduced.newPage(); monitor(calm); await calm.goto(base); await revealAll(calm);

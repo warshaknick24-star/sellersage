@@ -4,7 +4,6 @@ const form = document.querySelector('#lead-form');
 const status = document.querySelector('#form-status');
 const submitButton = document.querySelector('#submit-lead');
 const downloadButton = document.querySelector('#download-brief');
-const sampleButtons = [...document.querySelectorAll('[data-sample]')];
 const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
 // On the local dev server, requests go to the operator desk. On the live site, they're emailed via FormSubmit.
 const isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
@@ -12,17 +11,6 @@ const leadEndpoint = isLocal ? '/api/leads' : 'https://formsubmit.co/ajax/warsha
 let submitting = false;
 let savedFingerprint = '';
 const activeAnimations = new Set();
-
-function showSample(name) {
-  for (const button of sampleButtons) {
-    const selected = button.dataset.sample === name;
-    button.setAttribute('aria-pressed', String(selected));
-    document.getElementById(button.getAttribute('aria-controls')).hidden = !selected;
-  }
-}
-document.querySelector('.sample-controls').hidden = false;
-showSample('etsy');
-for (const button of sampleButtons) button.addEventListener('click', () => showSample(button.dataset.sample));
 
 for (const link of document.querySelectorAll('[data-service]')) {
   link.addEventListener('click', () => {
